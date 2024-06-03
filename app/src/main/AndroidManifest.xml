@@ -24,7 +24,7 @@
             android:exported="true"
             android:icon="@drawable/round_swap_horiz_24"
             android:label="@string/app_nameA"
-            android:name=".alternativeA"
+            android:name=".alternativeAa"
             android:targetActivity=".MainActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
@@ -35,7 +35,7 @@
             android:exported="true"
             android:icon="@drawable/round_swap_horiz_24"
             android:label="@string/app_nameB"
-            android:name=".alternativeB"
+            android:name=".alternativeAb"
             android:targetActivity=".MainActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
@@ -46,7 +46,7 @@
             android:exported="true"
             android:icon="@drawable/round_swap_horiz_24"
             android:label="@string/app_nameC"
-            android:name=".alternativeC"
+            android:name=".alternativeAc"
             android:targetActivity=".MainActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
@@ -62,7 +62,7 @@
             android:exported="true"
             android:icon="@drawable/round_terminal_24"
             android:label="@string/app_nameA"
-            android:name=".alternativeA"
+            android:name=".alternativeBa"
             android:targetActivity=".MainActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
@@ -73,7 +73,7 @@
             android:exported="true"
             android:icon="@drawable/round_terminal_24"
             android:label="@string/app_nameB"
-            android:name=".alternativeB"
+            android:name=".alternativeBb"
             android:targetActivity=".MainActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
@@ -84,7 +84,7 @@
             android:exported="true"
             android:icon="@drawable/round_terminal_24"
             android:label="@string/app_nameC"
-            android:name=".alternativeC"
+            android:name=".alternativeBc"
             android:targetActivity=".MainActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
@@ -99,7 +99,7 @@
             android:exported="true"
             android:icon="@drawable/round_wallet_24"
             android:label="@string/app_nameA"
-            android:name=".alternativeA"
+            android:name=".alternativeCa"
             android:targetActivity=".MainActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
@@ -110,7 +110,7 @@
             android:exported="true"
             android:icon="@drawable/round_wallet_24"
             android:label="@string/app_nameB"
-            android:name=".alternativeB"
+            android:name=".alternativeCb"
             android:targetActivity=".MainActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
@@ -121,7 +121,7 @@
             android:exported="true"
             android:icon="@drawable/round_wallet_24"
             android:label="@string/app_nameC"
-            android:name=".alternativeC"
+            android:name=".alternativeCc"
             android:targetActivity=".MainActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
