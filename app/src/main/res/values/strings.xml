@@ -2,4 +2,8 @@
     <string name="app_nameA">AppIcon Changer</string>
     <string name="app_nameB">Terminal</string>
     <string name="app_nameC">Wallet</string>
+    <string name="about">About</string>
+    <string name="select_the_name">Select the Name</string>
+    <string name="select_the_icon">Select the Icon</string>
+    <string name="app_preview">App Preview</string>
 </resources>

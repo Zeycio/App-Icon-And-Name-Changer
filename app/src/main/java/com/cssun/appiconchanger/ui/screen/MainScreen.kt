@@ -1,84 +1,149 @@
 package com.cssun.appiconchanger.ui.screen
 
+import android.annotation.SuppressLint
 import android.content.Context
+import androidx.compose.animation.AnimatedVisibility
+import androidx.compose.foundation.Image
+import androidx.compose.foundation.clickable
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.Column
+import androidx.compose.foundation.layout.Row
 import androidx.compose.foundation.layout.Spacer
-import androidx.compose.foundation.layout.fillMaxHeight
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.height
+import androidx.compose.foundation.layout.padding
+import androidx.compose.foundation.layout.wrapContentHeight
 import androidx.compose.foundation.layout.wrapContentSize
-import androidx.compose.material3.Button
+import androidx.compose.foundation.rememberScrollState
+import androidx.compose.foundation.verticalScroll
 import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.OutlinedCard
 import androidx.compose.material3.Surface
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
-import androidx.compose.runtime.getValue
+import androidx.compose.runtime.collectAsState
 import androidx.compose.runtime.mutableIntStateOf
+import androidx.compose.runtime.mutableStateOf
 import androidx.compose.runtime.remember
-import androidx.compose.runtime.setValue
+import androidx.compose.runtime.rememberCoroutineScope
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
+import androidx.compose.ui.graphics.ColorFilter
+import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.unit.dp
-import com.cssun.appiconchanger.dataClass.infoList
+import com.cssun.appiconchanger.R
+import com.cssun.appiconchanger.data.AppData
+import com.cssun.appiconchanger.data.iconOptions
+import com.cssun.appiconchanger.data.stringOptions
 import com.cssun.appiconchanger.logic.changeAppIcon
-import com.cssun.appiconchanger.ui.screen.compose.IconPicker
-import com.cssun.appiconchanger.ui.screen.compose.StringResourcePicker
+import com.cssun.appiconchanger.logic.getPkgName
+import com.cssun.appiconchanger.ui.screen.compose.AppPreviewCard
+import com.cssun.appiconchanger.ui.screen.compose.CardButton
+import com.cssun.appiconchanger.ui.screen.compose.IconSelectorCard
+import com.cssun.appiconchanger.ui.screen.compose.InfoCard
+import com.cssun.appiconchanger.ui.screen.compose.NameSelectorCard
+import kotlinx.coroutines.launch
 
+@SuppressLint("UnrememberedMutableState")
 @Composable
 fun MainScreen(context: Context) {
-    var intImg by remember { mutableIntStateOf(0) }
-    var intStr by remember { mutableIntStateOf(0) }
+    val dataStore = AppData(context)
+    val scope = rememberCoroutineScope()
+    val intImg = dataStore.getIcon.collectAsState(initial = 0)
+    val intStr = dataStore.getName.collectAsState(initial = 0)
+    val intImgTemp = mutableIntStateOf(intImg.value)
+    val intStrTemp = mutableIntStateOf(intStr.value)
+
     Surface(
         modifier = Modifier.wrapContentSize(),
     ) {
         Box(
             modifier = Modifier.fillMaxSize()
         ) {
+            val scrollState = rememberScrollState()
+            val infoVisibility = remember { mutableStateOf(false) }
             OutlinedCard(
                 modifier = Modifier
-                    .fillMaxHeight(.5f)
-                    .fillMaxWidth(.8f)
+                    .padding(20.dp)
+                    .wrapContentHeight()
+                    .fillMaxWidth(.9999f)
                     .align(Alignment.Center),
-
+            ) {
+                Box(
+                    modifier = Modifier.wrapContentHeight()
                 ) {
-                Column(
-                    modifier = Modifier.fillMaxSize(),
-                    horizontalAlignment = Alignment.CenterHorizontally,
-                    verticalArrangement = Arrangement.SpaceAround
-                ) {
-                    Spacer(modifier = Modifier.height(20.dp))
-                    Text(
-                        text = "Select the Icon And Name",
-                        style = MaterialTheme.typography.headlineSmall,
-                        modifier = Modifier
-                            .align(Alignment.CenterHorizontally)
-                    )
-                    Box { IconPicker(onIconSelected = { intImg = it!! }) }
-                    Box { StringResourcePicker(onStringSelected = { intStr = it!! }) }
-                    Button(onClick = {
-                        if (intImg != 0 && intStr != 0) {
-                            changeAppIcon(context, getPkgName(intImg, intStr))
+                    Column(
+                        modifier = Modifier.verticalScroll(scrollState),
+                        horizontalAlignment = Alignment.CenterHorizontally,
+                        verticalArrangement = Arrangement.SpaceAround
+                    ) {
+                        Spacer(modifier = Modifier.height(20.dp))
+                        Row(
+                            modifier = Modifier
+                                .fillMaxWidth()
+                                .padding(20.dp, 10.dp)
+                            ,
+                        ) {
+                            Spacer(modifier = Modifier.weight(.3f))
+                            Text(
+                                text = "Icon And Name Changer",
+                                style = MaterialTheme.typography.headlineMedium,
+                                modifier = Modifier
+                                    .weight(1f)
+                                    .align(Alignment.CenterVertically)
+                            )
+                            Image(
+                                modifier = Modifier.clickable(onClick = {infoVisibility.value = !infoVisibility.value}),
+                                painter = painterResource(id = R.drawable.outline_info_24),
+                                contentDescription = "about",
+                                colorFilter = ColorFilter.tint(MaterialTheme.colorScheme.onSurface)
+                            )
+                            
                         }
-                    }) {
-                        Text(text = "Set as AppIcon And Name")
+                        AnimatedVisibility(visible = infoVisibility.value) {
+                            InfoCard()
+                        }
+                        IconSelectorCard(
+                            onIconSelected = {
+                                intImgTemp.intValue = it!!
+                            },
+                            iconOptions = iconOptions,
+                            selectedIconRes = intImgTemp.intValue
+
+                        )
+                        NameSelectorCard(
+                            onStringSelected = {
+                                intStrTemp.intValue = it!!
+                            },
+                            stringOptions = stringOptions, selectedString = intStrTemp.intValue
+                        )
+                        AnimatedVisibility(visible = intImgTemp.intValue != 0 && intStrTemp.intValue != 0) {
+                            Box {
+                                AppPreviewCard(
+                                    iconResId = intImgTemp.intValue,
+                                    strgId = intStrTemp.intValue
+                                )
+                            }
+                        }
+                        CardButton(text = "Apply") {
+                            if (intImgTemp.intValue != 0 && intStrTemp.intValue != 0) {
+                                scope.launch {
+                                    dataStore.setIcon(intImgTemp.intValue)
+                                    dataStore.setName(intStrTemp.intValue)
+                                }
+                                changeAppIcon(
+                                    context,
+                                    getPkgName(intImgTemp.intValue, intStrTemp.intValue)
+                                )
+                            }
+                        }
                     }
                 }
             }
-
         }
     }
-
 }
 
-fun getPkgName(intImg: Int, intStr: Int): String {
-    for (i in infoList.indices) {
-        if (infoList[i].iconImgRes == intImg && infoList[i].iconStrRes == intStr) {
-            return infoList[i].packageName
-        }
-    }
-    return ""
-}
+

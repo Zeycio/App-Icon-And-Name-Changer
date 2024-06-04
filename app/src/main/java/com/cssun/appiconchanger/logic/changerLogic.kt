@@ -17,8 +17,6 @@ fun changeAppIcon(context: Context, aliasToEnable: String) {
         "com.cssun.appiconchanger.alternativeCb",
         "com.cssun.appiconchanger.alternativeCc"
     )
-
-
     try {
         pm.setComponentEnabledSetting(
             ComponentName(context, aliasToEnable),
