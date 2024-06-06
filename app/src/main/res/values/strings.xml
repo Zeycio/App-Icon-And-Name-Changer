@@ -6,4 +6,6 @@
     <string name="select_the_name">Select the Name</string>
     <string name="select_the_icon">Select the Icon</string>
     <string name="app_preview">App Preview</string>
+    <string name="a_demo_app_that_can_change_it_s_icon_and_name_programmatically">A demo app that can change it\'s icon and name programmatically</string>
+    <string name="zeycio">- Zeycio</string>
 </resources>

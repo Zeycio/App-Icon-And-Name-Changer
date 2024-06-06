@@ -3,12 +3,10 @@ package com.cssun.appiconchanger.ui.screen
 import android.annotation.SuppressLint
 import android.content.Context
 import androidx.compose.animation.AnimatedVisibility
-import androidx.compose.foundation.Image
 import androidx.compose.foundation.clickable
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.Column
-import androidx.compose.foundation.layout.Row
 import androidx.compose.foundation.layout.Spacer
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.fillMaxWidth
@@ -30,10 +28,7 @@ import androidx.compose.runtime.remember
 import androidx.compose.runtime.rememberCoroutineScope
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
-import androidx.compose.ui.graphics.ColorFilter
-import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.unit.dp
-import com.cssun.appiconchanger.R
 import com.cssun.appiconchanger.data.AppData
 import com.cssun.appiconchanger.data.iconOptions
 import com.cssun.appiconchanger.data.stringOptions
@@ -55,7 +50,6 @@ fun MainScreen(context: Context) {
     val intStr = dataStore.getName.collectAsState(initial = 0)
     val intImgTemp = mutableIntStateOf(intImg.value)
     val intStrTemp = mutableIntStateOf(intStr.value)
-
     Surface(
         modifier = Modifier.wrapContentSize(),
     ) {
@@ -80,30 +74,15 @@ fun MainScreen(context: Context) {
                         verticalArrangement = Arrangement.SpaceAround
                     ) {
                         Spacer(modifier = Modifier.height(20.dp))
-                        Row(
-                            modifier = Modifier
-                                .fillMaxWidth()
-                                .padding(20.dp, 10.dp)
-                            ,
-                        ) {
-                            Spacer(modifier = Modifier.weight(.3f))
                             Text(
                                 text = "Icon And Name Changer",
                                 style = MaterialTheme.typography.headlineMedium,
                                 modifier = Modifier
-                                    .weight(1f)
-                                    .align(Alignment.CenterVertically)
+                                    .clickable(onClick = {infoVisibility.value = !infoVisibility.value})
+                                    .align(Alignment.CenterHorizontally)
                             )
-                            Image(
-                                modifier = Modifier.clickable(onClick = {infoVisibility.value = !infoVisibility.value}),
-                                painter = painterResource(id = R.drawable.outline_info_24),
-                                contentDescription = "about",
-                                colorFilter = ColorFilter.tint(MaterialTheme.colorScheme.onSurface)
-                            )
-                            
-                        }
                         AnimatedVisibility(visible = infoVisibility.value) {
-                            InfoCard()
+                            InfoCard(context = context)
                         }
                         IconSelectorCard(
                             onIconSelected = {
@@ -111,7 +90,6 @@ fun MainScreen(context: Context) {
                             },
                             iconOptions = iconOptions,
                             selectedIconRes = intImgTemp.intValue
-
                         )
                         NameSelectorCard(
                             onStringSelected = {
