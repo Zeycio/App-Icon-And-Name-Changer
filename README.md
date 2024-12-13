@@ -29,7 +29,8 @@ Below are screenshots showcasing the app's functionality:
 
 ### Video Walkthrough
 
-![Description of the GIF](.assets/screenRec.gif)
+<img src=".assets/screenRec.gif" alt="Gif" width="540" height="1200">
+
 
 ## Installation
 
