@@ -31,9 +31,10 @@ Below are screenshots showcasing the app's functionality:
 
 Check out a short demo video showing the app in action:
 
-[![Watch the demo]()
-
-
+<video width="600" controls>
+  <source src="https://github.com/Zeycio/App_Icon_And_Name_Changer_Jetpack_Compose/blob/07ddd71eaa2c03845390e26766e92c697585c97c/%20assets/screenRec.mp4" type="video/mp4">
+  Your browser does not support the video tag.
+</video>
 
 ## Installation
 
