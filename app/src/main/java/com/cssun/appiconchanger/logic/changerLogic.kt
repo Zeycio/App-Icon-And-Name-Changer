@@ -6,6 +6,7 @@ import android.content.pm.PackageManager
 
 fun changeAppIcon(context: Context, aliasToEnable: String) {
     val pm = context.packageManager
+    //not the most creative naming
     val aliases = listOf(
         "com.cssun.appiconchanger.alternativeAa",
         "com.cssun.appiconchanger.alternativeAb",

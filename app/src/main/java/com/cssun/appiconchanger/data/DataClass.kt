@@ -7,7 +7,7 @@ data class AppIconInfo(
     val iconStrRes: Int,
     val iconImgRes: Int
 )
-
+//not the most creative naming
 val infoList  = listOf(
     AppIconInfo("com.cssun.appiconchanger.alternativeAa", R.string.app_nameA,R.drawable.round_swap_horiz_24),
     AppIconInfo("com.cssun.appiconchanger.alternativeAb", R.string.app_nameB,R.drawable.round_swap_horiz_24),
