@@ -13,7 +13,7 @@
 
 ### Video Walkthrough
 
-<img src=".assets/screenRec.gif" alt="Gif" width="540" height="1200">
+<img src=".assets/ScreenRec.gif" alt="Gif" width="540" height="1200">
 
 
 ## Installation
