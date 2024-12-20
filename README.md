@@ -11,22 +11,6 @@
 - **User-Friendly Interface**: Designed with Jetpack Compose for a modern, intuitive user experience.
 - **Preview Mode**: See changes in real-time before applying them.
 
-
-
-## Screenshots and Video
-
-### Screenshots
-Below are screenshots showcasing the app's functionality:
-
-1. **Home Screen**
-   ![Home Screen](./screenshots/home_screen.png)
-
-2. **App Name Customization**
-   ![Change App Name](./screenshots/change_app_name.png)
-
-3. **Icon Selection**
-   ![Icon Selection](./screenshots/icon_selection.png)
-
 ### Video Walkthrough
 
 <img src=".assets/screenRec.gif" alt="Gif" width="540" height="1200">
