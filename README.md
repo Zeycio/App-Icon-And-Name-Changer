@@ -20,7 +20,7 @@
 
 1. Clone the repository:
    ```bash
-   git clone https://github.com/Zeycio/App_Icon_And_Name_Changer_Jetpack_Compose.git
+   git clone https://github.com/Zeycio/App-Icon-And-Name-Changer.git
    ```
 2. Open the project in Android Studio.
 3. Build and run the app on your preferred emulator or device.
