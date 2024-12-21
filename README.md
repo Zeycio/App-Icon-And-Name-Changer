@@ -1,4 +1,4 @@
-# App Name and Icon Changer
+# App Icon and Name Changer
 
 **Have you ever wondered how apps like ![Discord](https://cdn.icon-icons.com/icons2/2108/PNG/32/discord_icon_130958.png) Discord, ![DuckDuckGo](https://duckduckgo.com/favicon.ico) DuckDuckGo, and ![Arc Browser](.assets/arc.png) Arc Browser change their icons on the fly? Wonder no more!** You can check out **App Name and Icon Changer**, a demo Jetpack Compose application that shows devs to easily change the app name and icon directly within the app. This feature is particularly useful for personalization or creating themed versions of an app.
 
